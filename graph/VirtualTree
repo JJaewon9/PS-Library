@@ -1,5 +1,5 @@
 //in[i]: euler tour idx, lca 전처리 필요
-void treeComp(vector<int>& v){
+void VirtualTree(vector<int>& v){
     sort(all(v),[&](int a,int b){ return in[a]<in[b]; });
     int sz=v.size();
     for(int i=1;i<sz;i++) v.push_back(lca(v[i-1],v[i]));
