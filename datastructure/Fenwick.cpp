@@ -15,5 +15,5 @@ struct Fenwick{ // 1-based!!!!!!!!!!!!!!!!
         }
         return ret;
     }
-    ll query(int s,int e){ return sum(e)-sum(s-1); }
+    ll query(int s,int e){ return s>e?0:sum(e)-sum(s-1); }
 };
