@@ -1,4 +1,5 @@
 //in[i]: euler tour idx, lca 전처리 필요
+vector<array<ll,2>> vG[500010];
 void VirtualTree(vector<int>& v){
     sort(all(v),[&](int a,int b){ return in[a]<in[b]; });
     int sz=v.size();
