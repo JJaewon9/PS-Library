@@ -20,11 +20,11 @@ struct BTRIE{
         }
     }
     int query(int x){ // xor min
-        int curr=0;
+        int curr=0,ret=0;
         for(int i=30;i>=0;i--){
             int b=(x>>i)&1;
             if(ch[b][curr]!=-1) curr=ch[b][curr];
-            else curr=ch[b^1][curr];
+            else ret|=(1<<i),curr=ch[b^1][curr];
         }
+        return ret;
     }
-};
