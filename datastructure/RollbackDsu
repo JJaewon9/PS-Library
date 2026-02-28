@@ -1,0 +1,31 @@
+struct Dsu{
+    vector<ll> p,sz;
+    vector<pair<ll&,ll>> history;
+    void init(int n){
+        p.resize(n+1); sz.resize(n+1);
+        for(int i=0;i<=n;i++){
+            p[i]=i;
+            sz[i]=1;
+        }
+    }
+    int find(int x){
+        while(x!=p[x]) x=p[x];
+        return x;
+    }
+    void merge(int x,int y){
+        x=find(x); y=find(y);
+        if(x==y) return;
+        if(sz[x]<sz[y]) swap(x,y);
+        history.push_back({p[y],p[y]});
+        history.push_back({sz[x],sz[x]});
+        p[y]=x;
+        sz[x]+=sz[y];
+    }
+    int checkpoint(){ return history.size(); }
+    void rollback(int until){
+        while(history.size()>until){
+            history.back().first=history.back().second;
+            history.pop_back();
+        }
+    }
+};
