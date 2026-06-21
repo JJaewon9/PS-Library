@@ -55,6 +55,7 @@ template <typename T> struct Barrett {
 constexpr int MOD=1000000007;
 using mint=Mod<int,MOD>;
 2. arbitrary modular
-using mint=Mod<int,Barrett<int>{}>;
-Barrett<int>::set(m);
+Barrett<int> DynamicMod;
+using mint=Mod<int,DynamicMod>;
+DynamicMod.set(m);
 */
