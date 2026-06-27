@@ -31,14 +31,14 @@ template <typename Head,typename... Tail> void DEBUG_OUT(Head H, Tail... T) { ce
 #endif
 
 // multidimentional vector
-template <class T>
-auto makeVector(size_t n, const T& val) {
-    return vector<T>(n, val);
+template <typename T>
+auto makeVector(size_t n, const T& value) {
+    return vector<T>(n, value);
 }
-template <class T, class... Sizes>
-auto makeVector(size_t n, size_t m, Sizes... sizes, const T& val) {
-    auto inner = makeVector<T>(m, sizes..., val);
-    return vector<decltype(inner)>(n, inner);
+
+template <typename... Args>
+auto makeVector(size_t n, Args... args) {
+    return vector(n, makeVector(args...));
 }
 
 void TESTCASE() {
