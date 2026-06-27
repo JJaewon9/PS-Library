@@ -32,13 +32,13 @@ template <typename Head,typename... Tail> void DEBUG_OUT(Head H, Tail... T) { ce
 
 // multidimentional vector
 template <typename T>
-auto makeVector(size_t n, const T& value) {
+auto vec(size_t n, const T& value) {
     return vector<T>(n, value);
 }
 
 template <typename... Args>
-auto makeVector(size_t n, Args... args) {
-    return vector(n, makeVector(args...));
+auto vec(size_t n, Args... args) {
+    return vector(n, vec(args...));
 }
 
 void TESTCASE() {
